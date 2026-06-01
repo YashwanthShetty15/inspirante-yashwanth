@@ -40,9 +40,7 @@ A full-stack web application that allows college administrators to manage events
 
 **4. Set up environment variables**
 
-    cd ../backend
-
-Copy `.env.example` to `.env` and fill in:
+Copy .env.example to .env and fill in:
 
     PORT=3000
     MONGO_URI=mongodb://localhost:27017/inspirante
@@ -76,12 +74,12 @@ Open http://localhost:5173 in your browser.
 ## Sample Credentials
 
 **Admin**
-- Username: `admin`
-- Password: `inspirante2026`
+- Username: admin
+- Password: inspirante2026
 
 **Students**
-- Username: `asha.rao` / Password: `student123`
-- Username: `ravi.shetty` / Password: `student123`
+- Username: asha.rao / Password: student123
+- Username: ravi.shetty / Password: student123
 
 ---
 
@@ -93,7 +91,7 @@ Open http://localhost:5173 in your browser.
 - Students can register for events, see spots left, and view their registrations
 - Duplicate registration prevented at both UI and database level
 - Full events show disabled button marked as Full
-- All API routes prefixed with `/api/`
+- All API routes prefixed with /api/
 
 ---
 
