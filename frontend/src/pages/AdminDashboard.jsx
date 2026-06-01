@@ -105,7 +105,7 @@ export default function AdminDashboard() {
             <p className="page-subtitle">Admin Dashboard</p>
           </div>
           <div className="flex gap-12 align-center">
-            <span className="welcome-text">Hey, {user?.name} 👋</span>
+            <span className="welcome-text">Hey, {user?.name}</span>
             <button className="btn-logout" onClick={handleLogout}>Logout</button>
           </div>
         </div>
