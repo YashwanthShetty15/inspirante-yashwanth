@@ -12,16 +12,16 @@ const seed = async () => {
     await mongoose.connect(process.env.MONGO_URI);
     console.log('Connected to MongoDB');
 
-    // Clear existing data
+    
     await User.deleteMany({});
     await Event.deleteMany({});
     console.log('Cleared existing data');
 
-    // Hash password for all students
+
     const studentPassword = await bcrypt.hash('student123', 10);
     const adminPassword = await bcrypt.hash('inspirante2026', 10);
 
-    // Create admin
+
     const admin = await User.create({
       username: 'admin',
       password: adminPassword,
@@ -29,7 +29,7 @@ const seed = async () => {
       role: 'admin'
     });
 
-    // Create all 11 students
+
     await User.create([
       { username: 'asha.rao',      password: studentPassword, name: 'Asha Rao',      role: 'student' },
       { username: 'ravi.shetty',   password: studentPassword, name: 'Ravi Shetty',   role: 'student' },
@@ -44,7 +44,7 @@ const seed = async () => {
       { username: 'priya.bangera', password: studentPassword, name: 'Priya Bangera', role: 'student' },
     ]);
 
-    // Create 5 events
+
     await Event.create([
       { name: 'Tech Symposium 2026',    date: new Date('2026-07-10'), venue: 'Main Auditorium',    capacity: 120, createdBy: admin._id },
       { name: 'Hackathon',              date: new Date('2026-07-15'), venue: 'Lab Block C',         capacity: 40,  createdBy: admin._id },
