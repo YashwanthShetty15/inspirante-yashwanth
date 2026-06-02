@@ -38,8 +38,16 @@ This would make the app feel significantly snappier, especially on slower connec
 
 Preventing a student from registering twice was handled at two levels deliberately.
 
-At the database level, the Registration model has a unique compound index on the `student` and `event` fields together. This means MongoDB will physically reject any duplicate combination at the database layer — even if somehow two requests came in simultaneously.
+At the database level, the Registration model has a unique compound index on the
+student and event fields together. This means MongoDB will physically reject any
+duplicate combination at the database layer — even if two requests came in simultaneously.
 
-At the UI level, once a student registers for an event, the Register button is replaced with a non-clickable "Registered ✓" indicator. This means the API call is never even made a second time in normal usage — the option simply disappears from the interface.
+At the UI level, once a student registers for an event, the Register button changes
+to show "✓ Registered" but remains clickable. If clicked again, it immediately shows
+a clear error message: "You have already registered for this event." This satisfies
+the requirement of showing a clear error on duplicate attempts rather than silently
+failing or hiding the option entirely.
 
-And if the API is called again anyway (for example via a direct API call or a race condition), the backend catches the duplicate key error from MongoDB and returns a clear 400 response with an error message. All three layers work together so the requirement is airtight.
+And if the API is somehow called again directly, the backend catches the duplicate
+key error from MongoDB and returns a clear 400 response. All three layers work
+together so the requirement is airtight.
