@@ -119,7 +119,13 @@ export default function StudentDashboard() {
                         </div>
                         <div className="flex flex-col gap-8 align-end">
                           {registered ? (
-                            <span className="chip chip-blue">✓ Registered</span>
+                            <button
+                              className="btn-primary"
+                              style={{ padding: '8px 16px', fontSize: '13px' }}
+                              onClick={() => setErrors(prev => ({ ...prev, [event._id]: 'You have already registered for this event.' }))}
+                            >
+                              ✓ Registered
+                            </button>
                           ) : full ? (
                             <button className="btn-disabled" disabled>Full</button>
                           ) : (
